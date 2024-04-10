@@ -264,6 +264,7 @@
             body: formData,
           })
             .then((response) => {
+              console.log(response);
               PredictButton.innerHTML = "Analyze";
               // Graph Header Response.................................................
               if (response.headers.get("X-Graph-Exists") === "true") {
@@ -280,9 +281,8 @@
                 const summaryContent = summaryResponse.summary;
                 const converter = new showdown.Converter();
                 const htmlSummary = converter.makeHtml(summaryContent);
+                console.log(htmlSummary);
                 summaryResult.innerHTML = htmlSummary;
-                // const htmlSummary = marked(summaryContent); // Convert markdown to HTML
-                // summaryResult.innerHTML = summaryContent;
               } else {
                 summaryResult.innerHTML = "api didnt respond anything";
               }
